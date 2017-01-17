@@ -31,8 +31,9 @@ ALLOWED_HOSTS = ['192.168.37.128']
 # Application definition
 
 INSTALLED_APPS = [
+    'lessons',
     'main_site',
-    'register',
+    'user_auth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -14,13 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
-from user_auth import views
+from . import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^(?P<lang>[A-Za-z]+)/user_auth/$',views.user_auth, name='user_auth'),
-    url(r'^(?P<lang>[A-Za-z]+)/user_auth/',include('user_auth.urls')),
-    url(r'^(?P<lang>[A-Za-z]+)/welcome/', include('main_site.urls')),
-    url(r'^(?P<lang>[A-Za-z]+)/lessons/', include('lessons.urls')),
+    url(r'^(?P<lesson_id>index)/$',views.render_lesson, name='lessons_index'),
+    url(r'^(?P<lesson_module>basic)/(?P<lesson_id>\d+)/$',views.render_lesson, name='lessons'),
 ]
