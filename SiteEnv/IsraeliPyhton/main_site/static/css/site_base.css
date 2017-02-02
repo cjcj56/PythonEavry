@@ -1,0 +1,25 @@
+header > div {
+    margin: 5%;
+}
+
+footer {
+    /*position:fixed;*/
+    bottom: 0px;
+    display: inline-block;
+    height: 35px;
+    margin: 0px 50px 0px 0px;
+    background: #9FF;
+    /*background: #DDD;*/
+    color: #000;
+    /*text-align: right;*/
+    padding: 10px 30px;
+}
+
+th {
+    text-align: center;
+    vertical-align:middle;
+}
+
+td {
+    vertical-align:middle;
+}

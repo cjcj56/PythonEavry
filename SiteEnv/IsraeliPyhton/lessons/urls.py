@@ -18,8 +18,12 @@ from . import views
 
 app_name = 'lessons'
 urlpatterns = [
-    url(r'^(?P<lesson_module_name>basic)/index/$',views.render_index, name='index'),
-    url(r'^(?P<lesson_module_name>basic)/(?P<lesson_num>\d+)/$',views.render_lesson, name='lesson'),
-    url(r'^(?P<lesson_module_name>basic)/(?P<lesson_num>\d+)/practice/$',views.render_lesson, name='practice'),
-    url(r'^(?P<lesson_module_name>basic)/(?P<lesson_num>\d+)/solution/$',views.render_lesson, name='solution'),
+    url(r'^(?P<lesson_module_name>basic)/', include([
+        url(r'^index/$',views.render_index, name='index'),
+        url(r'^(?P<lesson_num>\d+)/', include([
+            url(r'^(?P<lesson_type>lesson)$', views.render_lesson, name='lesson'),
+            url(r'^(?P<lesson_type>practice)/$', views.render_lesson, name='practice'),
+            url(r'^(?P<lesson_type>solution)/$', views.render_lesson, name='solution'),
+        ])),
+    ])),
 ]

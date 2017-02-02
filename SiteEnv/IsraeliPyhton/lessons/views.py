@@ -21,7 +21,7 @@ def render_index(request,lang, lesson_module_name):
 
 
 # def render_lesson(request,lang,lesson_module,lesson_num,lesson_type):
-def render_lesson(request,lang,lesson_module_name,lesson_num):
+def render_lesson(request,lang,lesson_module_name,lesson_num,lesson_type):
     # lesson_module = LessonModule.objects.get(module_name=lesson_module_name,module_lang=lang)
     # lesson = Lesson.objects.get(lesson_num=lesson_num,lesson_module=lesson_module)
     lang_obj = get_object_or_404(Language, language=lang)
@@ -32,7 +32,8 @@ def render_lesson(request,lang,lesson_module_name,lesson_num):
         'lang': lang_obj,
         'lesson_module': lesson_module,
         'lesson': lesson,
+        'lesson_type': lesson_type,
     }
     # return render(request,''.join(('lessons/', lang, '/', lesson_module_name, '/', lesson_num, '_', lesson_type, '.html')), context)
-    return render(request,''.join(('lessons/', lang, '/', lesson_module_name, '/', lesson_num, '.html')), context)
+    return render(request,''.join(('lessons/', lang, '/', lesson_module_name, '/', lesson_type, lesson_num, '.html')), context)
 

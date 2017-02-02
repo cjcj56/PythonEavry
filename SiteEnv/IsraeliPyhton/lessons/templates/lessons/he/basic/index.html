@@ -23,9 +23,9 @@
             <td>{{ lesson.lesson_title|safe }}</td>
             <td style="text-align:{{ lang.get_textalign_display }}">{{ lesson.lesson_desc |safe }}</td>
             <td>
-                <a href="{% url 'lessons:lesson' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num %}">שיעור</a><br/>
-                <a href="{% url 'lessons:practice' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num %}">תרגול</a><br/>
-                <a href="{% url 'lessons:solution' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num %}">פתרונות</a>
+                <a href="{% url 'lessons:lesson' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num lesson_type='lesson' %}">שיעור</a><br/>
+                <a href="{% url 'lessons:practice' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num lesson_type='practice' %}">תרגול</a><br/>
+                <a href="{% url 'lessons:solution' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num lesson_type='solution' %}">פתרונות</a>
             </td>
         </tr>
         {% endfor %}
