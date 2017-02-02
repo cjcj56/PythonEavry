@@ -1,31 +1,30 @@
-{%  extends "site_base.html" %}
+{%  extends "he/site_base.html" %}
 
-{% block language %}he{% endblock %}
 
-{% block bodytextdir %}rtl{% endblock %}
 
-{% block mainheader %}ברוכים הבאים לאתר הפייתון הישראלי!{% endblock %}
-
+{%  block mainheader %}יחידות לימוד{%  endblock %}
 
 {% block pagecontent %}
 
 
-<div>
+<div style="width:80%">
 
-    <table class="table table-hover table-bordered table-striped" style="width:80%;text-align:center">
+    <table class="table table-hover table-bordered table-striped" style="text-align:center">
         <thead><tr>
-            <th>מספר שיעור</th>
-            <th>כותרת</th>
-            <th>,תיאור קצר</th>
-            <th>עבור לשיעור!</th>
+            <th>מספר יחידה</th>
+            <th>כותרת יחידה</th>
+            <th>תיאור תכולה</th>
+            <th>קישור ליחידה</th>
         </tr></thead>
         <tbody>
-        {% for lesson in lessons %}
+        {% for lesson_module in lesson_modules %}
         <tr>
-            <td>#{{ lesson.lesson_id }}</td>
-            <td>{{ lesson.lesson_title|safe }}</td>
-            <td style="text-align:{{ textalign }}">Lesson Description: {{ lesson.lesson_desc |safe }}</td>
-            <td><a href="../lessons/basic/{{ lesson.lesson_id }}">GO</a></td>
+            <td><b>#{{ lesson_module.module_num }}</b></td>
+            <td>{{ lesson_module.module_title }}</td>
+            <td style="text-align:{{ lang.get_textalign_display }}">{{ lesson_module.module_desc|safe }}</td>
+            <td>
+                <a href="{% url 'lessons:index' lang=lang.language lesson_module_name=lesson_module.module_name %}">להתחיל!</a><br/>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

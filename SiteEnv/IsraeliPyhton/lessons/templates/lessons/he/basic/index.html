@@ -1,0 +1,39 @@
+{%  extends "he/site_base.html" %}
+
+
+
+{%  block mainheader %}יחידת לימוד #{{ lesson_module.module_num }}: {{ lesson_module.module_title }}{%  endblock %}
+
+{% block pagecontent %}
+
+
+<div style="width:80%">
+
+    <table class="table table-hover table-bordered table-striped" style="text-align:center">
+        <thead><tr>
+            <th>מספר שיעור</th>
+            <th>נושא שיעור</th>
+            <th>תיאור</th>
+            <th>קישור לשיעור</th>
+        </tr></thead>
+        <tbody>
+        {% for lesson in lessons %}
+        <tr>
+            <td><b>#{{ lesson.lesson_num }}</b></td>
+            <td>{{ lesson.lesson_title|safe }}</td>
+            <td style="text-align:{{ lang.get_textalign_display }}">{{ lesson.lesson_desc |safe }}</td>
+            <td>
+                <a href="{% url 'lessons:lesson' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num %}">שיעור</a><br/>
+                <a href="{% url 'lessons:practice' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num %}">תרגול</a><br/>
+                <a href="{% url 'lessons:solution' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num %}">פתרונות</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+
+{% endblock %}

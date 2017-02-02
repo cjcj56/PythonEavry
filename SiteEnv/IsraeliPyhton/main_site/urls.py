@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
+# import lessons.views
 
+app_name = 'main_site'
 urlpatterns = [
     url(r'^$', views.welcome, name='welcome'),
+    # url(r'^(?P<lesson_module>basic)/(?P<lesson_id>\d+)/$',lessons.views.render_lesson, name='lesson'),
 ]

@@ -25,7 +25,7 @@ SECRET_KEY = 'dll47q^g36!ta68cer$$0j#+55u=id&-)^!s&$k_@2(75zbdcg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.37.128']
+ALLOWED_HOSTS = ['192.168.248.128']
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'IsraeliPyhton.urls'
@@ -119,7 +120,8 @@ PASSWORD_HASHERS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jerusalem'
 
 USE_I18N = True
 
@@ -132,3 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATICFILES_DIR = (
+#     os.path.join(BASE_DIR, 'static'),
+#     '/home/binyamink/PythonEavry/lessons/he/basic/1.html',
+# )

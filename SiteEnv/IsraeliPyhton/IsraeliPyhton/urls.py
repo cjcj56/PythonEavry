@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^(?P<lang>[A-Za-z]+)/user_auth/$',views.user_auth, name='user_auth'),
     url(r'^(?P<lang>[A-Za-z]+)/user_auth/',include('user_auth.urls')),
-    url(r'^(?P<lang>[A-Za-z]+)/welcome/', include('main_site.urls')),
     url(r'^(?P<lang>[A-Za-z]+)/lessons/', include('lessons.urls')),
+    url(r'^(?P<lang>[A-Za-z]+)/welcome/', include('main_site.urls')),
 ]

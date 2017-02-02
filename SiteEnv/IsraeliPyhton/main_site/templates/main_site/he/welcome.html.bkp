@@ -1,0 +1,38 @@
+{%  extends "he/site_base.html" %}
+
+
+{% block pagecontent %}
+
+
+<div style="width:80%">
+
+    <table class="table table-hover table-bordered table-striped" style="text-align:center">
+        <thead><tr>
+            <th style="text-align:center;vertical-align:middle">יחידה</th>
+            <th style="text-align:center;vertical-align:middle">מספר שיעור</th>
+            <th style="text-align:center;vertical-align:middle">נושא שיעור</th>
+            <th style="text-align:center;vertical-align:middle">תיאור</th>
+            <th style="text-align:center;vertical-align:middle">קישור לשיעור</th>
+        </tr></thead>
+        <tbody>
+        {% for lesson in lessons %}
+        <tr>
+            <td style="vertical-align:middle">{{ lesson.get_module_name }}</td>
+            <td style="vertical-align:middle">#{{ lesson.lesson_id }}</td>
+            <td style="vertical-align:middle">{{ lesson.lesson_title|safe }}</td>
+            <td style="text-align:{{ textalign }};vertical-align:middle">{{ lesson.lesson_desc |safe }}</td>
+            <td style="vertical-align:middle">
+                <a href="{% url 'lessons:lesson' lang='he' lesson_module='basic' lesson_id=lesson.lesson_id %}">שיעור</a><br/>
+                <a href="{% url 'lessons:practice' lang='he' lesson_module='basic' lesson_id=lesson.lesson_id %}">תרגול</a><br/>
+                <a href="{% url 'lessons:solution' lang='he' lesson_module='basic' lesson_id=lesson.lesson_id %}">פתרונות</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}
+

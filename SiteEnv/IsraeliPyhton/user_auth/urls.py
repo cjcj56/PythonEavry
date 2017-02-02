@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from . import views
 from django.views.generic import FormView
 
+app_name = 'user_auth'
 urlpatterns = [
     url(r'^register/', views.RegistrationView.as_view(), name='register'),
     url(r'^signin/', views.SigninView.as_view(), name='signin'),

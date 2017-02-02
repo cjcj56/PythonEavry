@@ -1,13 +1,14 @@
-{%  extends "site_base.html" %}
+{%  extends "en/site_base.html" %}
 
 
 {% block pagecontent %}
 
 
-<div>
+<div style="width:80%">
 
-    <table class="table table-hover table-bordered table-striped" style="width:80%;text-align:center">
+    <table class="table table-hover table-bordered table-striped" style="text-align:center">
         <thead><tr>
+            <th>Lesson Module</th>
             <th>Lesson ID</th>
             <th>Lesson Title</th>
             <th>Lesson Description</th>
@@ -16,10 +17,11 @@
         <tbody>
         {% for lesson in lessons %}
         <tr>
-            <td>#{{ lesson.lesson_id }}</td>
+            <td><b>#{{ lesson.get_module_name }}</b></td>
+            <td>#{{ lesson.lesson_num }}</td>
             <td>{{ lesson.lesson_title|safe }}</td>
-            <td style="text-align:{{ textalign }}">Lesson Description: {{ lesson.lesson_desc |safe }}</td>
-            <td><a href="../lessons/basic/{{ lesson.lesson_id }}">GO</a></td>
+            <td style="text-align:{{ textalign }}">{{ lesson.lesson_desc |safe }}</td>
+            <td><a href="{% url 'lessons:lesson' lang='en' lesson_module='basic' lesson_id=lesson.lesson_id %}">GO</a></td>
         </tr>
         {% endfor %}
         </tbody>
