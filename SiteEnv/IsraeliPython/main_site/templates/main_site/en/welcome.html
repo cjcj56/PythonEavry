@@ -1,0 +1,36 @@
+{%  extends "en/site_base.html" %}
+
+
+
+{%  block mainheader %}Modules{%  endblock %}
+
+{% block pagecontent %}
+
+
+<div style="width:80%">
+
+    <table class="table table-hover table-bordered table-striped" style="text-align:center">
+        <thead><tr>
+            <th>Module ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Link</th>
+        </tr></thead>
+        <tbody>
+        {% for lesson_module in lesson_modules %}
+        <tr>
+            <td><b>#{{ lesson_module.module_num }}</b></td>
+            <td>{{ lesson_module.module_title }}</td>
+            <td style="text-align:{{ lang.get_textalign_display }}">{{ lesson_module.module_desc|safe }}</td>
+            <td>
+                <a href="{% url 'lessons:index' lang=lang.language lesson_module_name=lesson_module.module_name %}">GO!</a><br/>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

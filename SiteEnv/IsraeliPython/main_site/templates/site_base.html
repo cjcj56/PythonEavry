@@ -1,0 +1,41 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+<!DOCTYPE html>
+
+<html lang="{{ lang.language }}" dir="{{ lang.textalign }}">
+    <head>
+        <title>Israeli Python</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/site_base.css' %}" type="text/css" />
+        <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" />
+    </head>
+
+    <body direction="{{ lang.textalign }}">
+
+        <header><div align="center">
+            <img src="{{ STATIC_PREFIX }}img/{{ lang.language }}/python-logo.png" width="50%" class="img-responsive img-rounded" />
+            <h1>{% block mainheader %}Welcom to the Israeli Python site!{% endblock %}</h1>
+        </div></header>
+
+
+        <div align="center">
+            {% if video_lesson %}
+            <div id="lesson-video">
+                <iframe width="854" height="480" src="{{ video_lesson.video_url }}" frameborder="0" allowfullscreen>
+                </iframe>
+            </div>
+            {% endif %}
+            {% block pagecontent %}{% endblock %}
+        </div>
+    
+    <footer align="center" style="float: {{ lang.get_oppositealign_display }}">
+        {% block footer %}TGITEAIF &copy; 2017 Binyamin Kisch{% endblock %}
+    </footer>
+
+    </body>
+
+</html>

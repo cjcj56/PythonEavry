@@ -1,0 +1,39 @@
+{%  extends "en/site_base.html" %}
+
+
+
+{%  block mainheader %}Module #{{ lesson_module.module_num }}: {{ lesson_module.module_title }}{%  endblock %}
+
+{% block pagecontent %}
+
+
+<div style="width:80%">
+
+    <table class="table table-hover table-bordered table-striped" style="text-align:center">
+        <thead><tr>
+            <th>Lesson ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Links</th>
+        </tr></thead>
+        <tbody>
+        {% for lesson in lessons %}
+        <tr>
+            <td><b>#{{ lesson.lesson_num }}</b></td>
+            <td>{{ lesson.lesson_title|safe }}</td>
+            <td style="text-align:{{ lang.get_textalign_display }}">{{ lesson.lesson_desc |safe }}</td>
+            <td>
+                <a href="{% url 'lessons:lesson' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num lesson_type='lesson' %}">Lesson</a><br/>
+                <a href="{% url 'lessons:practice' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num lesson_type='practice' %}">Practice</a><br/>
+                <a href="{% url 'lessons:solution' lang=lang.language lesson_module_name=lesson_module.module_name lesson_num=lesson.lesson_num lesson_type='solution' %}">Solutions</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+
+{% endblock %}

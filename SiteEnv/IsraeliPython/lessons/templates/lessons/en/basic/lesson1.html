@@ -1,0 +1,13 @@
+{%  extends "site_base.html" %}
+
+
+{%  block mainheader %}Lesson #{{ lesson.lesson_num}}: {{ lesson.lesson_title }} {%  endblock %}
+
+
+{% block pagecontent %}
+
+Test: {{ lesson.lesson_video }}
+
+{% include "/home/binyamink/PythonEavry/Lessons/en/1.txt" %}
+
+{% endblock %}
